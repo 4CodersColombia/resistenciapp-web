@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-screen w-screen flex flex-col">
+  <div class="relative w-screen flex flex-col full-viewport">
     <div
       class="absolute flex-col flex items-end p-2 z-10 bg-white bg-opacity-10 self-end"
     >
@@ -32,6 +32,9 @@
       :markerUpload="markerUpload"
       @click="showUploadMarker"
       @clickMarkerUpload="showUploadDialog = true"
+      @on-marker-click="
+        (id) => $router.push({ name: 'photo', params: { photoId: id } })
+      "
       :center="mapCenter"
     />
     <upload-dialog
@@ -57,13 +60,17 @@ export default {
     UploadDialog,
   },
   created() {
-    db.collection("photos").onSnapshot((snapshot) => {
-      this.markers = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        coordinates: getCoordinate(doc.data().geohash),
-      }));
-    });
+    db.collection("photos")
+      .orderBy("totalLikes", "desc")
+      .onSnapshot((snapshot) => {
+        this.markers = snapshot.docs
+          .filter((doc) => !doc.data().disabled)
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+            coordinates: getCoordinate(doc.data().geohash),
+          }));
+      });
   },
   data() {
     return {
@@ -82,4 +89,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.full-viewport {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
+</style>

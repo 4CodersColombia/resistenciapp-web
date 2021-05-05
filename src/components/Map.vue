@@ -29,6 +29,7 @@
       :key="i"
       :coordinates="marker.coordinates"
       anchor="bottom"
+      @click="$emit('on-marker-click', marker.id)"
     >
       <img :src="require('../assets/marker.png')" slot="marker" class="w-10" />
     </MglMarker>
@@ -81,7 +82,7 @@ export default {
       if (!this.map) return;
       this.map.easeTo({
         center: this.center,
-        zoom: 16,
+        zoom: 14,
         duration: 1000,
       });
     },
