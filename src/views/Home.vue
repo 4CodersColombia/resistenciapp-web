@@ -1,10 +1,11 @@
 <template>
   <div class="relative h-screen w-screen flex flex-col">
-    <div
-      class="absolute flex-col flex items-end p-2 z-10 bg-white bg-opacity-10 self-end"
-    >
+    <div class="absolute flex-col flex items-start p-2 z-10 space-y-4 self-end">
       <v-btn :to="{ name: 'suggestions' }" color="primary" fab
         ><v-icon>mdi-message-alert</v-icon></v-btn
+      >
+      <v-btn :to="{ name: 'about' }" color="secondary" fab
+        ><v-icon>mdi-information-outline</v-icon></v-btn
       >
     </div>
     <div>
