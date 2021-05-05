@@ -53,9 +53,9 @@ export default {
 
 <style lang="scss" scoped>
 .carousel-3d-container {
-  position: absolute;
-  z-index: 10;
-  background-color: transparent;
+  position: absolute !important;
+  z-index: 10 !important;
+  background-color: transparent !important;
   margin-bottom: 0px !important;
 }
 .carousel-3d-slide {

@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <keep-alive>
-        <router-view />
+        <router-view :key="$route.fullPath" />
       </keep-alive>
     </v-main>
   </v-app>

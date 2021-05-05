@@ -3,6 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/storage";
 import "firebase/functions";
+import "firebase/analytics";
 import { FIREBASE_CONFIG } from "../.env.js";
 
 firebase.initializeApp(FIREBASE_CONFIG);
@@ -24,8 +25,9 @@ const auth = firebase.auth();
 const storageRef = firebase.storage();
 const functions = firebase.functions();
 
-db.useEmulator("192.168.12.18", 8083);
-functions.useEmulator("192.168.12.18", 5002);
+firebase.analytics();
+//db.useEmulator("192.168.12.18", 8083);
+//functions.useEmulator("192.168.12.18", 5002);
 
 firebase.firestore().enablePersistence();
 

@@ -82,7 +82,7 @@ export default {
       this.map.easeTo({
         center: this.center,
         zoom: 16,
-        duration: 500,
+        duration: 1000,
       });
     },
     onMapLoaded(event) {

@@ -10,15 +10,16 @@
         >
         <ShareNetwork
           network="whatsapp"
-          :url="'https://resistenciapp.web.app/photos/' + photoId"
+          :url="'https://resistenciapp.web.app/#/photos/' + photoId"
           title="Resistenciapp"
           description="Mira esta foto en resistenciapp."
-          hashtags="vuejs,vite"
+          hashtags="#resistenciapp"
         >
-        <v-icon large>mdi-whatsapp</v-icon>
+          <v-icon large>mdi-whatsapp</v-icon>
         </ShareNetwork>
       </div>
       <img :src="photo.photoUrl" class="h-48 w-full object-contain" />
+      <p class="text-center">{{ photo.comment }}</p>
       <v-divider></v-divider>
       <new-comment
         class="my-3"

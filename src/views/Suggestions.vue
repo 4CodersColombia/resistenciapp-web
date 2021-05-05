@@ -3,6 +3,7 @@
     <v-btn fab text :to="{ name: 'home' }" exact>
       <v-icon>mdi-arrow-left</v-icon></v-btn
     >
+    <p class="text-center font-semibold">Buzón de sugerencias</p>
     <new-comment
       class="my-3"
       @send-comment="sendComment"
