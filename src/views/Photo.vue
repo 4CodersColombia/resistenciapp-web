@@ -23,7 +23,10 @@
         style="width: 100%; height: 100%"
         :src="photo.photoUrl"
         class="h-48 w-full object-contain" />
-      <p class="text-center" style="margin-top: 20px">{{ photo.comment }}</p>
+      <p class="text-center mt-5">{{ photo.comment }}</p>
+      <span class="text-xs mx-1">{{
+        photo.timestamp.toDate().toLocaleString()
+      }}</span>
       <v-divider></v-divider>
       <new-comment
         class="my-3"

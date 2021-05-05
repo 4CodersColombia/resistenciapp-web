@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <keep-alive>
-        <router-view :key="$route.fullPath" />
-      </keep-alive>
+      <router-view :key="$route.fullPath" />
     </v-main>
   </v-app>
 </template>
