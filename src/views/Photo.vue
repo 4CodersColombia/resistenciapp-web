@@ -8,18 +8,22 @@
         <v-btn fab text :to="{ name: 'home' }" exact>
           <v-icon>mdi-arrow-left</v-icon></v-btn
         >
+        <img :src="require('@/assets/logo.png')" alt="" srcset="" />
         <ShareNetwork
           network="whatsapp"
           :url="'https://resistenciapp.web.app/#/photos/' + photoId"
-          title="Resistenciapp"
-          description="Mira esta foto en resistenciapp."
+          title="Mira esta foto de lo que está pasando en este momento!"
+          description=""
           hashtags="#resistenciapp"
         >
           <v-icon large>mdi-whatsapp</v-icon>
         </ShareNetwork>
       </div>
-      <img :src="photo.photoUrl" class="h-48 w-full object-contain" />
-      <p class="text-center">{{ photo.comment }}</p>
+      <img
+        style="width: 100%; height: 100%"
+        :src="photo.photoUrl"
+        class="h-48 w-full object-contain" />
+      <p class="text-center" style="margin-top: 20px">{{ photo.comment }}</p>
       <v-divider></v-divider>
       <new-comment
         class="my-3"
