@@ -1,18 +1,19 @@
 <template>
   <div class="relative h-screen w-screen flex flex-col">
     <div
-      class="absolute flex-col flex items-end p-2 z-10 bg-black bg-opacity-10 self-end"
+      class="absolute flex-col flex items-end p-2 z-10 bg-white bg-opacity-10 self-end"
     >
       <v-btn :to="{ name: 'suggestions' }" color="primary" fab
         ><v-icon>mdi-message-alert</v-icon></v-btn
       >
     </div>
-    <div
-      class="absolute right-16 flex-col flex items-end p-2 z-10 bg-black bg-opacity-10 self-end"
-    >
-      <v-btn :to="{ name: 'about' }" color="secondary" fab
-        ><v-icon>information-outline</v-icon></v-btn
-      >
+    <div>
+      <img
+        style="width: 250px; margin-left: auto; margin-right: auto; width: 50%"
+        :src="require('@/assets/logo.png')"
+        alt=""
+        srcset=""
+      />
     </div>
     <carousel-photos
       class="absolute bottom-2 z-10"
