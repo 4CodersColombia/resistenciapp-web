@@ -17,6 +17,10 @@
         placeholder="Haz click aquí para subir una foto"
         outlined
       ></v-file-input>
+      <span class="text-sx"
+        >Esta imagen será mostrada durante 24 horas en la ubicación que marcaste
+        en el mapa</span
+      >
       <v-btn
         @click="uploadPhoto"
         color="primary"

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-screen w-screen flex flex-col">
+  <div class="relative w-screen flex flex-col full-viewport">
     <div class="absolute flex-col flex items-start p-2 z-10 space-y-4 self-end">
       <v-btn :to="{ name: 'suggestions' }" color="primary" fab
         ><v-icon>mdi-message-alert</v-icon></v-btn
@@ -33,6 +33,9 @@
       :markerUpload="markerUpload"
       @click="showUploadMarker"
       @clickMarkerUpload="showUploadDialog = true"
+      @on-marker-click="
+        (id) => $router.push({ name: 'photo', params: { photoId: id } })
+      "
       :center="mapCenter"
     />
     <upload-dialog
@@ -58,13 +61,17 @@ export default {
     UploadDialog,
   },
   created() {
-    db.collection("photos").onSnapshot((snapshot) => {
-      this.markers = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        coordinates: getCoordinate(doc.data().geohash),
-      }));
-    });
+    db.collection("photos")
+      .orderBy("totalLikes", "desc")
+      .onSnapshot((snapshot) => {
+        this.markers = snapshot.docs
+          .filter((doc) => !doc.data().disabled)
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+            coordinates: getCoordinate(doc.data().geohash),
+          }));
+      });
   },
   data() {
     return {
@@ -83,4 +90,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.full-viewport {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
+</style>

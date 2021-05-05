@@ -19,6 +19,7 @@ firebase
     console.log(error);
   });
 
+firebase.firestore().enablePersistence({ synchronizeTabs: true });
 // firebase utils
 const db = firebase.firestore();
 const auth = firebase.auth();
@@ -28,7 +29,5 @@ const functions = firebase.functions();
 firebase.analytics();
 //db.useEmulator("192.168.12.18", 8083);
 //functions.useEmulator("192.168.12.18", 5002);
-
-firebase.firestore().enablePersistence();
 
 export { db, auth, storageRef, functions };
